@@ -3,6 +3,7 @@ const statusEl = document.getElementById('status');
 const restartBtn = document.getElementById('restart');
 const modeAiBtn = document.getElementById('mode-ai');
 const modePvpBtn = document.getElementById('mode-pvp');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 let board = Array(9).fill(null);
 let currentPlayer = 'X'; // X always starts
@@ -124,6 +125,11 @@ function resetGame(){
 
 restartBtn.addEventListener('click', ()=>{
   resetGame();
+});
+
+themeToggleBtn && themeToggleBtn.addEventListener('click', ()=>{
+  document.body.classList.toggle('bw');
+  themeToggleBtn.classList.toggle('active');
 });
 
 modeAiBtn.addEventListener('click', ()=>{

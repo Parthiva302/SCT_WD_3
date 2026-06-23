@@ -4,6 +4,11 @@
   --neon:#39ffca; /* teal neon */
   --accent:#7c5cff; /* purple accent */
   --muted:#9aa4b2;
+  --x-color: var(--neon);
+  --o-color: var(--accent);
+  --cell-bg: linear-gradient(180deg,rgba(255,255,255,0.01),transparent);
+  --button-bg: transparent;
+  --button-text: var(--muted);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -29,14 +34,31 @@ body{
 .board-area{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);padding:20px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 32px rgba(2,6,23,0.6)}
 .status{text-align:center;margin-bottom:16px;font-weight:600;color:var(--muted)}
 .board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(460px,90vw);margin:0 auto}
-.cell{position:relative;padding-top:100%;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);border-radius:10px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;overflow:hidden;transition:transform .12s, box-shadow .12s}
+.cell{position:relative;padding-top:100%;background:var(--cell-bg);border-radius:10px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;overflow:hidden;transition:transform .12s, box-shadow .12s}
 .cell:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(7,18,38,0.6)}
 .cell.disabled{cursor:not-allowed;opacity:0.9}
-.cell-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:800;color:var(--neon);text-shadow:0 4px 28px rgba(57,255,202,0.08);transition:color .12s}
-.cell-inner.o{color:var(--accent)}
+.cell-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:64px;font-weight:800;color:var(--x-color);text-shadow:0 4px 28px rgba(0,0,0,0.08);transition:color .12s}
+.cell-inner.o{color:var(--o-color)}
 .win-highlight{box-shadow:0 0 30px rgba(124,92,255,0.18) inset;border:1px solid rgba(124,92,255,0.28)}
 .footer{margin-top:18px;text-align:center;color:rgba(255,255,255,0.12)}
 .heart{color:var(--neon)}
+
+/* monochrome / black-white theme */
+body.bw{
+  --bg:#ffffff;
+  --panel:#ffffff;
+  --neon:#000000;
+  --accent:#000000;
+  --muted:#111111;
+  --x-color:#000000;
+  --o-color:#ffffff;
+  --cell-bg:linear-gradient(180deg,#0b0b0b,#000000);
+  --button-bg:#000000;
+  --button-text:#ffffff;
+}
+
+body.bw .title{color:var(--neon)}
+body.bw .btn{background:var(--button-bg);color:var(--button-text);border-color:rgba(255,255,255,0.06)}
 
 @media (max-width:420px){
   .cell-inner{font-size:42px}
